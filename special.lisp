@@ -2,7 +2,7 @@
 ;;;; special.lisp - Special dates and additional holidays
 ;;;;
 
-(in-package #:cl-feiertage)
+(in-package #:feiertage)
 
 ;;;;
 ;;;; Special dates with fixed dates

@@ -2,9 +2,9 @@
 ;;;; package.lisp - Package definition for cl-feiertage
 ;;;;
 
-(defpackage #:cl-feiertage
+(defpackage #:feiertage
   (:use #:cl)
-  (:nicknames #:feiertage)
+; (:nicknames #:feiertage)
   (:export
    ;; Date formatting
    #:*default-time-format*
@@ -100,6 +100,12 @@
    #:weltflüchtlingstag
    #:antikriegstag
    #:halloween
+   #:internationaler-tag-der-pressefreiheit
+   #:tag-der-erde
+   #:walpurgisnacht
+   #:internationaler-kindertag
+   #:muttertag
+   #:buß-und-bettag
    #:beginn-sommerzeit
    #:beginn-winterzeit
    #:allerseelen
@@ -152,4 +158,4 @@
    #:sort-feiertage-by-date
    ))
 
-(in-package #:cl-feiertage)
+(in-package #:feiertage)

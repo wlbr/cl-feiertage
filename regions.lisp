@@ -2,7 +2,7 @@
 ;;;; regions.lisp - Region definitions for German and Austrian states
 ;;;;
 
-(in-package #:cl-feiertage)
+(in-package #:feiertage)
 
 ;;;;
 ;;;; Helper functions for creating region holiday lists
@@ -12,6 +12,7 @@
   "Create a list of common holiday functions for all regions.
   
   Returns a list of functions that take a year and return a Feiertag."
+  (declare (ignore year))
   (list #'neujahr #'ostermontag #'christi-himmelfahrt #'pfingstmontag))
 
 (defun create-uniq-austrian-feiertags-list ()
@@ -51,7 +52,7 @@
   
   Args:
     year: The year to calculate holidays for
-    country: "DE" for Germany or "AT" for Austria
+    country: \"DE\" for Germany or \"AT\" for Austria
     ffun-list: Optional list of additional holiday functions specific to the region
   
   Returns:
@@ -114,6 +115,7 @@
   
   Since 2019, Internationaler Frauentag (March 8) is a holiday.
   In 2020 and 2025, Tag der Befreiung (May 8) is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list nil))
     (when (>= year 2019)
       (push #'internationaler-frauentag ffun-list))
@@ -148,6 +150,7 @@
   Returns a Region object holding all public holidays in the state Bremen.
   
   Since 2018, Reformationstag is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list nil))
     (when (>= year 2018)
       (push #'reformationstag ffun-list))
@@ -161,6 +164,7 @@
   Returns a Region object holding all public holidays in the state Hamburg.
   
   Since 2018, Reformationstag is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list nil))
     (when (>= year 2018)
       (push #'reformationstag ffun-list))
@@ -185,6 +189,7 @@
   
   Since 2018, Reformationstag is a holiday.
   Since 2023, Internationaler Frauentag is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list (list #'reformationstag)))
     (when (>= year 2023)
       (push #'internationaler-frauentag ffun-list))
@@ -198,6 +203,7 @@
   Returns a Region object holding all public holidays in the state Niedersachsen.
   
   Since 2018, Reformationstag is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list nil))
     (when (>= year 2018)
       (push #'reformationstag ffun-list))
@@ -265,6 +271,7 @@
   Returns a Region object holding all public holidays in the state Schleswig-Holstein.
   
   Since 2018, Reformationstag is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list nil))
     (when (>= year 2018)
       (push #'reformationstag ffun-list))
@@ -279,6 +286,7 @@
   
   Reformationstag is a holiday.
   Since 2019, Weltkindertag is a holiday."
+  (declare (ignore include-sundays))
   (let ((ffun-list (list #'reformationstag)))
     (when (>= year 2019)
       (push #'weltkindertag ffun-list))
@@ -496,13 +504,13 @@
   Args:
     year: The year to calculate holidays for
     include-sundays: Whether to include holidays on Sundays
-    country: Optional filter - "de" for German states, "at" for Austrian states
+    country: Optional filter - \"de\" for German states, \"at\" for Austrian states
   
   Returns:
     A list of Region objects.
   
   If country is not specified, returns all German states, all Austrian states,
-  plus the "All" region."
+  plus the \"All\" region."
   (let* ((german-regions (region-function-list-to-region-list
                           (list #'baden-württemberg #'bayern #'berlin
                                 #'brandenburg #'bremen #'hamburg

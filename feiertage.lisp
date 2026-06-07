@@ -2,7 +2,7 @@
 ;;;; feiertage.lisp - Main holiday calculation functions
 ;;;;
 
-(in-package #:cl-feiertage)
+(in-package #:feiertage)
 
 ;;;;
 ;;;; Date formatting configuration
@@ -21,7 +21,7 @@
 ;;;; Feiertag structure
 ;;;;
 
-(defstruct (feiertag (:conc-name feiertag-))
+(defstruct (feiertag (:conc-name feiertag-) (:copier nil))
   "A Feiertag represents a holiday with a date and a name.
    It can be associated with zero or more regions."
   (date (local-time:now) :type local-time:timestamp)
@@ -49,7 +49,7 @@
 ;;;; Region structure
 ;;;;
 
-(defstruct (region (:conc-name region-))
+(defstruct (region (:conc-name region-) (:copier nil))
   "A Region represents a federal state of Germany or Austria (Bundesland).
    It contains the name, short name, and a list of public holidays valid in that region."
   (name "" :type string)
